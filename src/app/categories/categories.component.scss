@@ -1,0 +1,17 @@
+.mat-list-base {
+  display: flex;
+  font-size: 12px;
+
+  .mat-list-item {
+    text-transform: capitalize;
+    color: #000;
+    font-size: 1.3em;
+
+
+  }
+
+}
+
+.mat-list-item-content {
+  padding: 0 !important;
+}

@@ -1,5 +1,4 @@
-<ul>
-  <li *ngFor="let category of categories" (click)="fetchCategoryData(category)">
-    {{category}}
-  </li>
-</ul>
+<mat-nav-list>
+  <mat-list-item *ngFor="let category of categories"
+                 (click)="fetchCategoryData(category)">{{category}}</mat-list-item>
+</mat-nav-list>

@@ -5,7 +5,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CategoriesComponent} from './categories/categories.component';
 import {HttpClientModule} from '@angular/common/http';
-import { JokesComponent } from './jokes/jokes.component';
+import {JokesComponent} from './jokes/jokes.component';
+import {MatListModule, MatToolbarModule, MatMenuModule, MatIconModule} from '@angular/material';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { FavouriteJokesComponent } from './favourite-jokes/favourite-jokes.component';
+
 
 
 @NgModule({
@@ -13,11 +17,17 @@ import { JokesComponent } from './jokes/jokes.component';
     AppComponent,
     CategoriesComponent,
     JokesComponent,
+    NotFoundComponent,
+    FavouriteJokesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

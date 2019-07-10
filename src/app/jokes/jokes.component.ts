@@ -1,12 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {ChuckService} from "../chuck.service";
+import {MatListModule} from '@angular/material/list';
+
+interface response {
+  result: String
+}
 
 @Component({
   selector: 'app-jokes',
   templateUrl: './jokes.component.html',
-  styleUrls: ['./jokes.component.scss']
+  styleUrls: ['./jokes.component.scss'],
+  providers: [MatListModule]
 })
+
+
 export class JokesComponent implements OnInit {
 
   constructor(private service: ChuckService, private Router: Router, private route: ActivatedRoute) {
@@ -20,9 +28,9 @@ export class JokesComponent implements OnInit {
       // let id = +params['id']; // (+) converts string 'id' to a number
       console.log(params.category)
       const data = this.service.fetchJokes(params.category)
-      data.subscribe(res => {
+      data.subscribe((res: response) => {
         console.log(res)
-        this.jokes = res.result
+        this.jokes = res.result;
       })
     });
 
