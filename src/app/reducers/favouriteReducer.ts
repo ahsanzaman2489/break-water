@@ -1,8 +1,7 @@
 import {Action} from 'redux';
 
 
-const INITIAL_STATE = {
-};
+const INITIAL_STATE = {};
 
 // A higher-order reducer: accepts an animal type and returns a reducer
 // that only responds to actions for that particular animal type.
@@ -30,6 +29,11 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         jokes: newArray,
+      };
+    case 'UPDATE_SORTED_LIST':
+      localStorage.setItem('favouriteJokes', JSON.stringify(action.payload));
+      return {
+        ...state,
       };
   }
 

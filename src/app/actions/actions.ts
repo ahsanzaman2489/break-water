@@ -36,4 +36,9 @@ export class AllActions {
   removeFromFavourite = (id) => {
     this.ngRedux.dispatch({type: 'REMOVE_FROM_FAVOURITE', payload: id});
   }
+
+  updateFavouriteList = (jokes) => {
+    this.ngRedux.dispatch({type: 'UPDATE_SORTED_LIST', payload: jokes});
+  }
+
 }

@@ -8,11 +8,12 @@ import {CategoriesComponent} from './categories/categories.component';
 import {HttpClientModule} from '@angular/common/http';
 import {JokesComponent} from './jokes/jokes.component';
 import {MatListModule, MatToolbarModule, MatMenuModule, MatIconModule, MatProgressSpinnerModule} from '@angular/material';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {FavouriteJokesComponent} from './favourite-jokes/favourite-jokes.component';
 import {StoreModule} from './store/store.module';
 import {SingleJokeComponent} from './single-joke/single-joke.component';
-import { LoadingspinnerComponent } from './loadingspinner/loadingspinner.component';
+import {LoadingspinnerComponent} from './loadingspinner/loadingspinner.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { LoadingspinnerComponent } from './loadingspinner/loadingspinner.compone
     MatListModule,
     MatToolbarModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
