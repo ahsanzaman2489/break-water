@@ -1,3 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 
+.loading_wrapper {
+  position: absolute;
+  background: #fff;
+  display: flex;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+}

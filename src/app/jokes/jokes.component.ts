@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from "@angular/router";
-import {ChuckService} from "../chuck.service";
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {AllActions} from '../actions/actions';
 import {MatListModule} from '@angular/material/list';
+import {select} from '@angular-redux/store';
+import {Observable} from 'rxjs';
 
 interface response {
   result: String
@@ -16,29 +18,28 @@ interface response {
 
 
 export class JokesComponent implements OnInit {
-
-  constructor(private service: ChuckService, private Router: Router, private route: ActivatedRoute) {
-  }
+  @select() jokesReducer: Observable<any>;
+  @select() loadingReducer: Observable<any>;
 
   private jokes;
+  private loading;
+
+  constructor(private actions: AllActions, private Router: Router, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      // let id = +params['id']; // (+) converts string 'id' to a number
-      console.log(params.category)
-      const data = this.service.fetchJokes(params.category)
-      data.subscribe((res: response) => {
-        console.log(res)
-        this.jokes = res.result;
-      })
+      this.actions.fetchJokes(params.category);
     });
 
-    this.Router.events.subscribe((res) => {
-      // console.log(this.route, res)
-      // this.selectedCategory = route.snapshot.params['category']
+    this.jokesReducer.subscribe((data) => {
+      this.jokes = data.jokes;
+    });
 
-    })
+    this.loadingReducer.subscribe(data => {
+      this.loading = data.loading;
+    });
   }
 
 }

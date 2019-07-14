@@ -1,1 +1,4 @@
-<p>favourite-jokes works!</p>
+<div><a [routerLink]="[ '/']">back to categories</a></div>
+<div class="list-group">
+  <app-single-joke [joke]="joke" *ngFor="let joke of jokes"></app-single-joke>
+</div>

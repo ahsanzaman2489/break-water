@@ -1,4 +1,6 @@
-<mat-nav-list>
+<app-loadingspinner *ngIf="loading"></app-loadingspinner>
+<mat-nav-list *ngIf="!loading">
   <mat-list-item *ngFor="let category of categories"
-                 (click)="fetchCategoryData(category)">{{category}}</mat-list-item>
+                 (click)="fetchCategoryData(category)">{{category}}
+  </mat-list-item>
 </mat-nav-list>

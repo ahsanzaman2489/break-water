@@ -1,0 +1,25 @@
+<div class="list-group-item list-group-item-action app-single-joke">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1"></h5>
+  </div>
+  <p class="mb-1">{{joke.value}}</p>
+
+  <div *ngIf="!joke.isFavourite;then add else remove"></div>
+
+  <ng-template #add>
+    <mat-icon class="icon primary" color="primary" aria-hidden="false" aria-label="Example heart icon"
+              (click)="addToFavourite(joke)" title="Add to favourite">
+      favorite_border
+    </mat-icon>
+  </ng-template>
+
+  <ng-template #remove>
+    <mat-icon class="icon primary" color="primary" aria-hidden="false" aria-label="Example heart icon"
+              (click)="removeFromFavourite(joke.id)" title="remove from favourite">
+      favorite
+    </mat-icon>
+  </ng-template>
+  <p>
+    <small>{{joke.created_at}}</small>
+  </p>
+</div>

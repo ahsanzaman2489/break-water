@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChuckService} from '../chuck.service';
-import {Router} from "@angular/router";
+import {AllActions} from '../actions/actions';
+import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {select, select$, NgReduxModule, NgRedux} from '@angular-redux/store';
 
@@ -12,23 +13,22 @@ import {select, select$, NgReduxModule, NgRedux} from '@angular-redux/store';
 })
 export class CategoriesComponent implements OnInit {
   @select() categoryReducer: Observable<any>;
-
-  constructor(private service: ChuckService, private router: Router, private ngRedux: NgRedux<any>) {
-  }
+  @select() loadingReducer: Observable<any>;
 
   private categories;
+  private loading;
+
+  constructor(private router: Router, private actions: AllActions) {
+  }
 
   ngOnInit() {
-
+    this.actions.fetchCategories();
     this.categoryReducer.subscribe((data) => {
       this.categories = data.categories;
-    })
-
-
-    const data = this.service.fetchCategories();
-    data.subscribe((res) => {
-      this.ngRedux.dispatch({type: 'FETCH_CATEGORIES', payload: res});
-    })
+    });
+    this.loadingReducer.subscribe(data => {
+      this.loading = data.loading;
+    });
   }
 
   fetchCategoryData(categoryName) {
