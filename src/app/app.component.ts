@@ -9,7 +9,7 @@ import {select} from '@angular-redux/store';
 })
 export class AppComponent implements OnInit {
   @select() loadingReducer: Observable<any>;
-  private loading;
+  public loading;
 
   ngOnInit() {
     this.loadingReducer.subscribe(data => {

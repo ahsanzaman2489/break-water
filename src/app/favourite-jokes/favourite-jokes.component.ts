@@ -11,9 +11,10 @@ import {AllActions} from '../actions/actions';
 })
 export class FavouriteJokesComponent implements OnInit {
   @select() favouriteReducer: Observable<any>;
-  private jokes;
+  public jokes;
+  public sorting = 'asc';
 
-  constructor(private actions: AllActions) {
+  constructor(public actions: AllActions) {
   }
 
   ngOnInit() {

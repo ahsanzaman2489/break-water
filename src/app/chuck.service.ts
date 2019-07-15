@@ -14,7 +14,7 @@ const options = {
 })
 export class ChuckService {
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
   fetchCategories() {

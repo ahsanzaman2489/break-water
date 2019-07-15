@@ -18,10 +18,10 @@ export class JokesComponent implements OnInit {
   @select() jokesReducer: Observable<any>;
   @select() loadingReducer: Observable<any>;
 
-  private jokes;
-  private loading;
+  public jokes;
+  public loading;
 
-  constructor(private actions: AllActions, private Router: Router, private route: ActivatedRoute) {
+  constructor(public actions: AllActions, public Router: Router, public route: ActivatedRoute) {
   }
 
   ngOnInit() {

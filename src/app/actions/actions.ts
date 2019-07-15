@@ -2,13 +2,17 @@ import {ChuckService} from '../chuck.service';
 import {NgRedux} from '@angular-redux/store';
 import {Injectable} from '@angular/core';
 
+interface Response {
+  result: Array<{}>
+}
+
 @Injectable({
   providedIn: 'root'
 })
 
 
 export class AllActions {
-  constructor(private service: ChuckService, private ngRedux: NgRedux<any>) {
+  constructor(public service: ChuckService, public ngRedux: NgRedux<any>) {
   }
 
   fetchCategories = () => {
@@ -22,7 +26,7 @@ export class AllActions {
   fetchJokes = (category) => {
     this.ngRedux.dispatch({type: 'LOADING_START'});
     const data = this.service.fetchJokes(category);
-    data.subscribe((res) => {
+    data.subscribe((res: Response) => {
       this.ngRedux.dispatch({type: 'FETCH_JOKES', payload: res.result});
       this.ngRedux.dispatch({type: 'LOADING_DONE'});
     });

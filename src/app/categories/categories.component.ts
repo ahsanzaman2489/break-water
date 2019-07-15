@@ -14,10 +14,10 @@ export class CategoriesComponent implements OnInit {
   @select() categoryReducer: Observable<any>;
   @select() loadingReducer: Observable<any>;
 
-  private categories;
-  private loading;
+  public categories;
+  public loading;
 
-  constructor(private router: Router, private actions: AllActions) {
+  constructor(public router: Router, public actions: AllActions) {
   }
 
   ngOnInit() {

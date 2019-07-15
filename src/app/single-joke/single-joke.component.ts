@@ -12,7 +12,7 @@ export class SingleJokeComponent implements OnInit {
   @Input() joke;
   @select() favouriteReducer: Observable<any>;
 
-  constructor(private actions: AllActions) {
+  constructor(public actions: AllActions) {
   }
 
   ngOnInit() {
