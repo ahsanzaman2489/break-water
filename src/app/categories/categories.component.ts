@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ChuckService} from '../chuck.service';
 import {AllActions} from '../actions/actions';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {select, select$, NgReduxModule, NgRedux} from '@angular-redux/store';
+import {select} from '@angular-redux/store';
 
 
 @Component({

@@ -1,5 +1,14 @@
 <div><a [routerLink]="[ '/']">back to categories</a></div>
 <app-loadingspinner *ngIf="loading"></app-loadingspinner>
-<div class="list-group" *ngIf="!loading">
-  <app-single-joke [joke]="joke" *ngFor="let joke of jokes"></app-single-joke>
-</div>
+
+<div *ngIf="jokes && jokes.length == 0 && !loading;then noData else data"></div>
+<ng-template #noData>
+  No results
+</ng-template>
+
+<ng-template #data>
+  <div class="list-group">
+    <app-single-joke [joke]="joke" *ngFor="let joke of jokes"></app-single-joke>
+  </div>
+</ng-template>
+

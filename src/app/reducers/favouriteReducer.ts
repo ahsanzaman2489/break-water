@@ -21,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
       localStorage.setItem('favouriteJokes', JSON.stringify(favouriteJokes));
       return {
         ...state,
-        jokes: [...state.jokes, action.payload],
+        jokes: [...favouriteJokes],
       };
     case 'REMOVE_FROM_FAVOURITE':
       const newArray = favouriteJokes.filter(item => item.id !== action.payload);

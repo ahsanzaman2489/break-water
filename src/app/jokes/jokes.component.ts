@@ -1,13 +1,10 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AllActions} from '../actions/actions';
 import {MatListModule} from '@angular/material/list';
 import {select} from '@angular-redux/store';
 import {Observable} from 'rxjs';
 
-interface response {
-  result: String
-}
 
 @Component({
   selector: 'app-jokes',

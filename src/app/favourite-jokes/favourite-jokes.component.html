@@ -1,34 +1,44 @@
 <div><a [routerLink]="[ '/']">back to categories</a></div>
 
-<div class="list-group" cdkDropListGroup>
-  <div cdkDropList (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let joke of jokes" class="app-single-joke" cdkDrag>
-      <div class="list-group-item list-group-item-action ">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1"></h5>
+
+<div *ngIf="jokes.length == 0;then noData else data"></div>
+<ng-template #noData>
+  Favourite list is empty
+</ng-template>
+<ng-template #data>
+  <select name="" id="" [(ngModel)]="sorting">
+    <option value="asc">Asc</option>
+    <option value="desc">Desc</option>
+  </select>
+  <div class="list-group" cdkDropListGroup>
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let joke of jokes | sort:sorting" class="app-single-joke" cdkDrag>
+        <div class="list-group-item list-group-item-action ">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"></h5>
+          </div>
+          <p class="mb-1">{{joke.value}}</p>
+
+          <div *ngIf="!joke.isFavourite;then add else remove"></div>
+
+          <ng-template #add>
+            <mat-icon class="icon primary" color="primary" aria-hidden="false" aria-label="Example heart icon"
+                      (click)="addToFavourite(joke)" title="Add to favourite">
+              favorite_border
+            </mat-icon>
+          </ng-template>
+
+          <ng-template #remove>
+            <mat-icon class="icon primary" color="primary" aria-hidden="false" aria-label="Example heart icon"
+                      (click)="removeFromFavourite(joke.id)" title="remove from favourite">
+              favorite
+            </mat-icon>
+          </ng-template>
+          <p>
+            <small>{{joke.created_at}}</small>
+          </p>
         </div>
-        <p class="mb-1">{{joke.value}}</p>
-
-        <div *ngIf="!joke.isFavourite;then add else remove"></div>
-
-        <ng-template #add>
-          <mat-icon class="icon primary" color="primary" aria-hidden="false" aria-label="Example heart icon"
-                    (click)="addToFavourite(joke)" title="Add to favourite">
-            favorite_border
-          </mat-icon>
-        </ng-template>
-
-        <ng-template #remove>
-          <mat-icon class="icon primary" color="primary" aria-hidden="false" aria-label="Example heart icon"
-                    (click)="removeFromFavourite(joke.id)" title="remove from favourite">
-            favorite
-          </mat-icon>
-        </ng-template>
-        <p>
-          <small>{{joke.created_at}}</small>
-        </p>
       </div>
-
     </div>
   </div>
-</div>
+</ng-template>
