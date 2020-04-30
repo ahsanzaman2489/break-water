@@ -28,7 +28,7 @@
     "angular-redux": "^1.0.0-beta",
     "bootstrap": "^4.3.1",
     "flux-standard-action": "^2.1.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
